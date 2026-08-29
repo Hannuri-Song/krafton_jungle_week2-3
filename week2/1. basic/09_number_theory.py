@@ -111,7 +111,7 @@ def extended_gcd(a, b):
     return g, x, y
     
     pass
-from math import sqrt
+
 def is_prime(n):
     """
     소수 판별
