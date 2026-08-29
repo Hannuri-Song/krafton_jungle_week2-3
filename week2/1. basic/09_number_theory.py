@@ -102,9 +102,16 @@ def extended_gcd(a, b):
     # 역추적하며 x, y 계산
     if b == 0:
         return (a, 1, 0)
+
+    g, x1, y1 = extended_gcd(b, a % b)
+
+    x = y1
+    y = x1 - (a // b) * y1
+
+    return g, x, y
     
     pass
-
+from math import sqrt
 def is_prime(n):
     """
     소수 판별
@@ -119,7 +126,26 @@ def is_prime(n):
     # n이 2보다 작으면 False
     # 2부터 sqrt(n)까지 나누어 떨어지는지 확인    
     # 3부터 sqrt(n)까지 홀수만 확인
-    pass 
+    pass
+    n < 2 == False
+    def sqrt(n):
+        for a in range(1, n+1):
+            if a* a > n:
+                return int(a)
+            if a*a == n:
+                return a
+
+    t = sqrt(n)
+            
+    if n>=2:
+        if n == 2:
+            return True
+        elif n%2 == 0:
+            return False
+
+    for a in range(2, t+1, 2):
+        n%a != 0
+        return True
 
 # 테스트 케이스
 if __name__ == "__main__":
