@@ -129,6 +129,16 @@ def combinations(n: int, k: int) -> list:
             start: 이번에 시도해볼 수 있는 가장 작은 숫자
             current_combination: 지금까지 골라 둔 숫자들 (탐색 중)
         """
+        if len(current_combination) == k:
+            result.append(list(current_combination))
+            return
+
+        for num in range(start, n+1):
+            current_combination.append(num)
+            backtrack(num+1, current_combination)
+            current_combination.pop()
+
+        
 
         # ──────────────────────────────────────────────────────────────────
         # [Level 1] 종료 조건 (Base Case)
