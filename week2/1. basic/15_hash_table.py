@@ -42,14 +42,20 @@ def manage_grades(students):
     """
     # TODO: 평균 점수 계산
     pass
-    avg = sum(students.values()) / len(students)
+    avg = sum(students.values()) / len(students) #students에서 값만 갖고 오기
     
     # TODO: 최고 점수 학생 찾기
     pass
+    """
     top_score = max(students.values())
-    for name, score in students.items():
+    for name, score in students.items(): #items()는 키와 값을 같이 가져옴
         if score == top_score:
             top_student = name
+    """
+    top_student = max(students, key=students.get)
+    # students의 key들을 대상으로 max를 찾는데,
+    # 각각의 key를 students.get()에 넣어서 나온 값을 기준으로 비교해라.
+    top_score = students[top_student]
     
     return avg, top_student, top_score
 
@@ -66,11 +72,15 @@ def find_student_score(students, name):
     """
     # TODO: students에서 name 찾기
     pass
+    """
+    딕셔너리는 key를 이용해서 바로 value를 찾을 수 있기 때문에 for문을 쓸 필요가 없음
     for key, value in students.items():
         if key == name:
             return students.get(name)
         elif key != name:
             return "None"
+    """
+    return students.get(name)
 
 
 # 테스트 케이스

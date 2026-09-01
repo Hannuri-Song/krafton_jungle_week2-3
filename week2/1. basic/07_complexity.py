@@ -31,7 +31,7 @@ def find_duplicates_brute_force(nums):
     duplicates = []
     n = len(nums)
     for i in range(0, n-1):
-        count = 0
+        count = 0 # 현재 숫자가 뒤에 또 등장했는지 확인하는 변수
 
         for j in range(i+1, n):
             if nums[i] == nums[j]:
@@ -61,7 +61,7 @@ def find_duplicates_sorting(nums):
     if not nums:
         return []
 
-    nums.sort()
+    nums.sort() #정렬하면 중복값은 서로 붙어있기 때문에, 인접한 값들만 확인하면 됨
     # TODO: 배열을 정렬하세요 (nums.sort() 사용)
     pass
 
@@ -84,17 +84,24 @@ def find_duplicates_hash(nums):
     공간 복잡도: O(n)
     """
     n = len(nums)
-    seen = set()
+    seen = set() #집합은 값을 중복해서 저장하지 않기 때문에 자동 중복 저장 방지가 됨
     duplicates = set()
 
+    """
+    i를 쓰지 않고 nums[i]만 쓰고 있음 nums[i]나 여기선 i나 같음
     for i in range(len(nums)):
         if nums[i] in seen:
             duplicates.add(nums[i])
         else:
             seen.add(nums[i])
-         
-              
+    """
 
+    for num in nums:
+        if num in seen:
+            duplicates.add(num)
+        else:
+            seen.add(num)
+         
     # TODO: 각 원소를 순회하면서
     ## 이미 seen에 있으면 duplicates에 추가
     ## 없으면 seen에 추가

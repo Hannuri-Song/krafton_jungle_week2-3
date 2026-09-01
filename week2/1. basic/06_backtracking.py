@@ -108,7 +108,8 @@ combinations(n, k) -> list[list[int]]
 """
 
 
-def combinations(n: int, k: int) -> list:
+def combinations(n: int, k: int) -> list: # n과 k가 정수라는 타입 힌트
+                                          # -> list : 리스트를 반환할 것이라고 지정
     """
     1 부터 n 까지 숫자 중 k 개를 선택하는 모든 조합을 반환합니다.
 
@@ -128,15 +129,20 @@ def combinations(n: int, k: int) -> list:
         Args:
             start: 이번에 시도해볼 수 있는 가장 작은 숫자
             current_combination: 지금까지 골라 둔 숫자들 (탐색 중)
+        Q. 왜 별도의 함수를 하나 더 만들었냐?:
+        A. 현재 어디까지 골랐는가? 다음에는 어디부터 선택할 것인가?를 관리해야하기 때문
         """
         if len(current_combination) == k:
             result.append(list(current_combination))
+            # 그냥 current_combination을 반환 안하고 list(current_combination)을 반환
+            # current_combination은 이후에 계속 append, pop으로 수정되니 복사본 반환
             return
 
-        for num in range(start, n+1):
-            current_combination.append(num)
-            backtrack(num+1, current_combination)
-            current_combination.pop()
+        for num in range(start, n+1): #n+1을 하는 이유는 마지막 값이 포함되지 않기 때문
+            current_combination.append(num) #선택
+            backtrack(num+1, current_combination) # 탐색
+                                                  # num+1을 해서 중복을 방지한다
+            current_combination.pop() # 취소
 
         
 
@@ -180,7 +186,7 @@ def combinations(n: int, k: int) -> list:
             # current_combination.pop()
 
     # 처음 호출: 시작 숫자는 1, 지금까지 고른 숫자는 비어 있음
-    backtrack(1, [])
+    backtrack(1, []) # "아무것도 선택하지 않은 상태에서 1부터 선택을 시작해라."" 라는 의미
     return result
 
 

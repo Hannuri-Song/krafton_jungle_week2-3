@@ -46,15 +46,18 @@ def is_valid_parentheses(s):
         if a == "(":
             stack.append(a)
 
-        if a == ")":
+        elif a == ")":
             if stack == []:
                 return False
             stack.pop()
 
+    """
     if len(stack) == 0:
         return True
     else:
         return False
+    """
+    return len(stack) == 0 # 위 Line 55~58 최적화
     
     # TODO: 반복이 끝나면 스택이 비어있는지 확인
     pass

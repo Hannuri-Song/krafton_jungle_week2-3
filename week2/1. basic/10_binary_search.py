@@ -36,11 +36,32 @@ def binary_search(arr, target):
     left = 0
     right = len(arr) - 1
 
+    """
+    이분 탐색에서는 반복 횟수를 미리 정하는게 아니라 left와 right의 관계를 보고 정해야 함
+    따라서 left와 right가 계속 변하는 것을 기준으로 반복해야 함
+    range(left, right)은 범위를 정해버리기 때문에 적합하지 않음
+    또한 range() 메서드는 끝값을 포함하지 않기 때문에 더욱 부적합
+    
     for _ in range(left, right):
         mid = (left+right) // 2
 
         if arr[mid] == target:
             return arr.index(target)
+
+        elif arr[mid] < target:
+            left = mid +1
+
+        elif arr[mid] > target:
+            right = mid -1
+
+    while문을 활용하는 것이 적합하므로 아래와 같이 작성함
+    """
+
+    while left <= right: #left가 right보다 작거나 같을때까지 반복
+        mid = (left + right) // 2
+
+        if arr[mid] == target:
+            return mid
 
         elif arr[mid] < target:
             left = mid +1
@@ -56,7 +77,7 @@ def binary_search(arr, target):
     ## target이 더 작으면 right = mid - 1
     pass
     
-    return -1
+    return -1 # 탐색을 끝까지 했는데 target을 찾지 못 했을 경우 반환 하는 값
 
 # 테스트 케이스
 if __name__ == "__main__":

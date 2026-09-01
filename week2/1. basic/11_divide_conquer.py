@@ -38,13 +38,23 @@ def find_max_divide_conquer(arr, left, right):
     # TODO: base case - 원소가 하나면 그 값 반환
 
     pass
+    """
+    원소가 하나면 그 값을 반환 하려는 base case를 의도했으나,
+    재귀적으로 범위를 줄여도 arr 자체를 계속 사용하면 len(arr)에 변화가 없다.
+    원소가 하나일 때 그 값을 반환하는 코드는 결국 left == right을 확인해야 한다.
     if len(arr) == 1:
         return arr[0]
     # TODO: 중간 지점 계산
     pass
-    mid = int((left + right) / 2)    
+    """
+    if left == right: # base case
+        return arr[left]
+    # mid = int((left + right) / 2) 기존에 썼던 코드, 최적화는 바로 아래 Line
+    mid = (left + right) // 2 # //는 나눈 뒤, 소숫점은 버림하는 연산
     # TODO: 왼쪽 절반의 최댓값
     pass
+    """
+    아래와 같이 코드를 짜면 배열을 반으로 나누기는 하지만 재귀 호출을 하지 않음
     arr_left = arr[left: mid]
     arr_left_max = max(arr_left)
  
@@ -55,6 +65,10 @@ def find_max_divide_conquer(arr, left, right):
     # TODO: 둘 중 큰 값 반환
     pass
     return max(arr_left_max, arr_right_max)
+    """
+    left_max = find_max_divide_conquer(arr, left, mid)
+    right_max = find_max_divide_conquer(arr, mid + 1, right)
+    return max(left_max, right_max)
 
 
 # 테스트 케이스

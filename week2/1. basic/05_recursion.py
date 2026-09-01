@@ -25,8 +25,8 @@
 def factorial(n):
     if n == 0 or n == 1:
         return 1
-    else:
-        return n * factorial(n-1)
+    # else: 어차피 위에서 1을 반환받고 함수가 종료되었기 때문에 굳이 else 안써도 됨
+    return n * factorial(n-1)
     """
     재귀를 사용한 팩토리얼 계산
     
@@ -50,8 +50,8 @@ def fibonacci(n):
     elif n == 1:
         return 1
 
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+    # else: Line 28과 동일한 이유
+    return fibonacci(n-1) + fibonacci(n-2)
 
 
     """

@@ -91,7 +91,7 @@ print_list() 가 해야 할 일:
             current 를 current.next 로 이동.
 """
 
-class Node:
+class Node: # 노드 하나를 만드는 설계도
     """
     연결 리스트의 노드 (한 칸 = 데이터 + 다음 화살표)
 
@@ -99,19 +99,19 @@ class Node:
         │ data │ next │ ──▶ (다른 Node 또는 None)
         └──────┴──────┘
     """
-    def __init__(self, data):
+    def __init__(self, data): # 노드 객체를 만들 때 자동으로 실행되는 생성자
         self.data = data #data는 값을 가리키는 변수
         self.next = None #next는 다음 노드를 가르키는 변수
 
 
-class LinkedList:
+class LinkedList: # 연결 리스트 전체를 관리하는 클래스
     """
     단순 연결 리스트 (Singly Linked List)
 
         head ──▶ [data|next] ──▶ [data|next] ──▶ ... ──▶ [data|None]
     """
-    def __init__(self):
-        self.head = None
+    def __init__(self): 
+        self.head = None #첫 번째 노드를 가리키는 변수
 
     def append(self, data):
         """
@@ -127,7 +127,7 @@ class LinkedList:
                                        ──append(7)──▶
               head ─▶ [1|●]─▶[2|●]─▶[7|None]
         """
-        new_node = Node(data)
+        new_node = Node(data) # 새 노드를 만드는 코드. 하지만 아직 리스트에 연결되진 않음
 
         # ─── Level 1: 리스트가 비어 있는 경우 ────────────────────────
         # 힌트: self.head 가 None 이면, head 에 new_node 를 바로 꽂고 return.
@@ -137,16 +137,20 @@ class LinkedList:
         #       return
         if self.head is None:
             self.head = new_node
-            return 
+            return # 첫 번째 노드를 추가했으므로 이 if는 종료해야 함
 
         # ─── Level 2: 마지막 노드 찾기 ──────────────────────────────
         # head 부터 시작해서 next 가 None 이 될 때까지 따라갑니다.
         # 즉 "current.next 가 있는 동안" 계속 이동.
+        
         current = self.head
+        # head = 시작점을 기억하는 변수
+        # current = 리스트를 돌아다니는 변수
+
         # TODO: while 문으로 current 를 마지막 노드까지 이동시키세요.
         #   while current.next is not None:
         #       current = current.next
-        while current.next is not None:
+        while current.next is not None: # 마지막 노드를 찾는 while문
             current = current.next
 
         # ─── Level 3: 마지막 노드의 next 에 새 노드를 붙이기 ─────────
@@ -167,7 +171,7 @@ class LinkedList:
         # current 라는 "이동용 변수" 를 head 에서 시작시킵니다.
         # TODO: current = self.head
         #pass
-        current = self.head
+        current = self.head # 헤드로 이동
 
         # ─── Level 2: 끝까지 순회 ──────────────────────────────────
         # current 가 None 이 되면 "리스트의 끝" 이라는 신호입니다.

@@ -34,16 +34,21 @@
 def rotate_matrix_90(matrix):
     n = len(matrix)
     rotated = []
-    for _ in range(n):
-        row = []
+    for _ in range(n): # n번 반복하겠다. _는 반복 횟수 자체가 필요 없을 때 관습적으로 넣음
+        row = [] # 반복할 때마다 새로운 빈 리스트 생성 -> 회전된 배열의 한 줄을 의미
 
-        for _ in range(len(matrix[0])):
-            row.append(0)
-        rotated.append(row)
+        for _ in range(len(matrix[0])): #matrix[0]은 매트릭스 배열의 첫째 행을 의미
+                                        #len(matrix[0])은 결국 첫째 행의 길이니까 그만큼 반복
+            row.append(0)               # 반복 횟수만큼 0을 row 배열에 추가
+        rotated.append(row)             # row 배열을 rotated에 추가
+    #리스트 컴프리헨션으로 처리 한다면:
+    # rotated = [[0] * n for _ in range(n)]
+    # Line 37~42의 코딩을 단 한줄로 구현 가능
 
+    #여기서부터 회전 로직
     for i in range(n):
-        for j in range(len(matrix[0])):
-            rotated[j][n-1-i] = matrix[i][j]
+        for j in range(len(matrix[0])): #len(matrix[0]) = n도 같은 의미
+            rotated[j][n-1-i] = matrix[i][j] # 회전 구현의 핵심
 
 
     """

@@ -36,13 +36,23 @@ def find_above_average_students(students):
     scorelist = []
     for a in students:
         b = a["score"]
-        scorelist.append(b)
-        average = sum(scorelist) / len(scorelist)
+        scorelist.append(b) # b 변수지정할 필요 없이 scorelist.append(a["score"]) 가능
+        # average = sum(scorelist) / len(scorelist) -> for문 안에서 반복 계산할 필요가 없음
+    
+    # Line 36~39까지를 리스트 컴프리헨션으로 작성하면:
+    # scorelist = [a["score"] for a in students]
+
+    average = sum(scorelist) / len(scorelist)
 
     for c in students:
         if c["score"] >= average:
             studentlist.append(c["name"])
-        above_average_students = studentlist       
+        # above_average_students = studentlist -> for문 안에서 반복할 이유가 없음
+
+    # Line 47~49까지를 리스트 컴프리헨션으로 작성하면:
+    # studentlist = [c["name"] for c in students if c["score"] >= average]
+    
+    above_average_students = studentlist
     """
     평균 점수 이상인 학생들을 찾는 함수
     

@@ -26,17 +26,30 @@
 
 def is_palindrome(s):
     s=s.lower()
+
     result =""
+
     for a in s:
+    # for a in s.lower(): 이렇게 바로 써서 코드 한 줄 줄이기 가능
         if a.isalnum():
             result += a
 
+    return result == result[::-1]
+    
+    """
+    기존에 썼던 코드(line 43~49). 이렇게 할 필요 없음!
+        bool은 자료형을 나타내는 내장 이름이므로
+        굳이 변수에 저장할 필요 없이 바로 반환하기
     if result == result[::-1]:
-        bool=True
+
+        bool=True 
     else:
         bool=False
-
+    
     return bool
+    """
+
+
     
     """
     문자열이 회문인지 판별하는 함수

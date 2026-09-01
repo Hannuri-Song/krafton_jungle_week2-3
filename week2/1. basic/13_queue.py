@@ -40,6 +40,12 @@ def process_print_queue(jobs):
     queue = deque(jobs)
     
     processed = []
+
+    """
+    아래와 같이 for문을 쓰기 보다는 while문을 쓰는게 더 자연스러움
+    큐가 비어 있지 않은 동안 작업을 하나씩 꺼낸다를 요구하기 때문
+    deque 자체가 for문으로 순회가 가능하기 때문에 list(queue)를 할 필요가 없다
+    list(queue)는 불필요한 복사본
     for a in list(queue):
         print("처리:", a)
         processed.append(a)
@@ -50,7 +56,13 @@ def process_print_queue(jobs):
     ## 큐에서 작업 꺼내기
     ## 작업 처리 (출력 및 리스트에 추가)
     pass
-    
+    """
+    while queue: #queue가 비어있지 않은 동안 반복해라 라는 뜻
+        job = queue.popleft() # 선입선출 구현 부분
+
+        print("처리:", job)
+        processed.append(job)
+
     return processed
 
 # 테스트 케이스

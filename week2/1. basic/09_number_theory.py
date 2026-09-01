@@ -34,6 +34,8 @@ def gcd(a, b):
     Returns:
         최대공약수
     """
+
+    """
     if b == 0:
         return a
 
@@ -46,6 +48,21 @@ def gcd(a, b):
     elif a/b < 1:
         a, b = b, a
         return gcd(a,b)
+    """
+        
+    """
+    1. a/b > 1은 필요 없다
+    애초에 뭐가 큰 지 고려할 필요가 없음 알아서 큰 수랑 작은 수랑 위치가 바뀜
+
+    2. 중요한건 % (나머지)
+
+    따라서 Line 39~50은 아래와 같이 간단하게 바꿀 수 있음
+    """
+    if b == 0: # base case
+        return a
+    
+    return gcd(b, a%b) # recursive
+    
     # TODO: 유클리드 호제법 구현
     # base case: b가 0이면 a 반환
     # recursive를 이용 
@@ -58,6 +75,18 @@ def gcd_iterative(a, b):
             return a
         a,b = b, a%b
     return a
+
+    """
+    for 문은 보통 몇 번 반복할 지 알고 있을 때 사용하는데,
+    GCD는 몇 번 반복할지 알 필요가 없음
+    다만 b가 0이 될 때까지 반복하기만 하면 되기 때문에
+    while문을 써서 아래와 같이 하면 더 자연스러움:
+    
+    while b != 0:
+        a,b = b, a%b
+    return a
+    """
+
     """
     반복문을 사용한 최대공약수 계산
     
@@ -82,7 +111,9 @@ def lcm(a, b):
         최소공배수
     """
     # TODO: LCM 계산
-    return int(a * b / gcd(a,b))
+    # //는 몫이 반영되니까 아래와 같이 쓰는 편이 깔끔함:
+    return a*b // gcd(a,b)
+    # return int(a * b / gcd(a,b))
     pass
 
 def extended_gcd(a, b):
@@ -101,12 +132,12 @@ def extended_gcd(a, b):
     # recursive case
     # 역추적하며 x, y 계산
     if b == 0:
-        return (a, 1, 0)
+        return (a, 1, 0) # base case. b가 0이면, x=1, y=0을 의미
 
-    g, x1, y1 = extended_gcd(b, a % b)
+    g, x1, y1 = extended_gcd(b, a % b) # gcd(a,b) = gcd(b, a%b)를 이용
 
-    x = y1
-    y = x1 - (a // b) * y1
+    x = y1 # 역추적하며 y 계산
+    y = x1 - (a // b) * y1 # a%b = a - (a//b) % b 활용
 
     return g, x, y
     

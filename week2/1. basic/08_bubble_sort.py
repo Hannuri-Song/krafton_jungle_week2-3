@@ -34,8 +34,8 @@ def bubble_sort(arr):
     """
     n = len(arr)
 
-    for i in range(n-1):
-        for j in range(n-i-1):
+    for i in range(n-1): # n-1번 반복하는 이유는 마지막 하나 남으면 이미 정렬이 된 거기 때문
+        for j in range(n-i-1): # 이미 정렬된 뒷부분을 제외하겠다는 뜻
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     # TODO: 외부 반복문 - n-1번 반복
@@ -67,9 +67,19 @@ def bubble_sort_optimized(arr):
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
                 swapped = True
+                """
+                break의 위치가 잘못 되었음. 내부 반복문이 끝난 후에 물어봐야하는데,
+                이 위치에서 물어보면 당연히 계속 True이니 break가 실행되지 않음
                 if swapped == False:
                     break
-        
+                """
+        if swapped == False: # 이 위치에서 조건을 걸어야 break가 정상적으로 작동됨
+            break
+
+        # if not swapped:
+        #    break
+        # 위와 같이 더 간단하게 표현도 가능
+
         # TODO: 내부 반복문과 교환 로직 구현
         # 교환이 발생하면 swapped = True 설정        
         pass
