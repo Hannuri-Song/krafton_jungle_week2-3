@@ -43,14 +43,14 @@ def find_above_average_students(students):
     # scorelist = [a["score"] for a in students]
 
     average = sum(scorelist) / len(scorelist)
-
+    """
     for c in students:
         if c["score"] >= average:
             studentlist.append(c["name"])
         # above_average_students = studentlist -> for문 안에서 반복할 이유가 없음
-
+    """
     # Line 47~49까지를 리스트 컴프리헨션으로 작성하면:
-    # studentlist = [c["name"] for c in students if c["score"] >= average]
+    studentlist = [c["name"] for c in students if c["score"] >= average]
     
     above_average_students = studentlist
     """

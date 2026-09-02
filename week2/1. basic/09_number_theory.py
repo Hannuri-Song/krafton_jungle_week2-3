@@ -161,10 +161,15 @@ def is_prime(n):
     n < 2 == False
     def sqrt(n):
         for a in range(1, n+1):
+
+            if a*a >= n:
+                return a
+            """
             if a* a > n:
                 return int(a)
             if a*a == n:
                 return a
+            """
 
     t = sqrt(n)
             

@@ -37,7 +37,7 @@ def find_duplicates_brute_force(nums):
             if nums[i] == nums[j]:
                 count += 1
 
-        if count >0:
+        if count > 0:
                 count = 0
                 for j in range(i):
                     if nums[i] == nums[j]:
@@ -83,7 +83,7 @@ def find_duplicates_hash(nums):
     시간 복잡도: O(n)
     공간 복잡도: O(n)
     """
-    n = len(nums)
+    #n = len(nums)
     seen = set() #집합은 값을 중복해서 저장하지 않기 때문에 자동 중복 저장 방지가 됨
     duplicates = set()
 
