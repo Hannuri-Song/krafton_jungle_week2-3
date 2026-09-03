@@ -42,19 +42,24 @@ class TreeNode:
 def preorder(root):
     """전위 순회: 루트 → 왼쪽 → 오른쪽"""
     result = []
-    
+
     # TODO: root가 None이면 빈 리스트 반환
     pass
-    
+    if root == None:
+        return []    
     # TODO: 루트 값 추가
     pass
-    
+    result.append(root.value)
     # TODO: 왼쪽 서브트리 순회
     pass
-    
+    for a in preorder(root.left):
+        result.append(a)
+    # result += preorder(root.left) <- 이런 식으로 for문 안 쓰고 한번에 처리 가능
     # TODO: 오른쪽 서브트리 순회
     pass
-    
+    for b in preorder(root.right):
+        result.append(b)
+    # result += preorder(root.right) <- 상기 동문
     return result
 
 def inorder(root):
@@ -63,16 +68,19 @@ def inorder(root):
     
     # TODO: root가 None이면 빈 리스트 반환
     pass
-    
+    if root == None:
+        return []
     # TODO: 왼쪽 서브트리 순회
     pass
-    
+    for a in inorder(root.left):
+        result.append(a)
     # TODO: 루트 값 추가
     pass
-    
+    result.append(root.value)
     # TODO: 오른쪽 서브트리 순회
     pass
-    
+    for b in inorder(root.right):
+        result.append(b)
     return result
 
 def postorder(root):
@@ -81,16 +89,19 @@ def postorder(root):
     
     # TODO: root가 None이면 빈 리스트 반환
     pass
-    
+    if root is None:
+        return []
     # TODO: 왼쪽 서브트리 순회
     pass
-    
+    for a in postorder(root.left):
+        result.append(a)
     # TODO: 오른쪽 서브트리 순회
     pass
-    
+    for b in postorder(root.right):
+        result.append(b)
     # TODO: 루트 값 추가
     pass
-    
+    result.append(root.value)
     return result
 
 # 테스트 케이스
