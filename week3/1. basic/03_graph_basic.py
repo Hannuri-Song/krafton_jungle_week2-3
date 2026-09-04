@@ -42,12 +42,21 @@ def create_graph(vertices, edges, directed=False):
     """
     # TODO: 빈 그래프 초기화
     pass
-    
+    graph = {}
     # TODO: 간선 추가
     ## 간선 추가 (u에서 v로)
     ## 무방향 그래프면 반대 방향도 추가
+
+    for u in range(vertices): # 그래프 리스트에 정점을 미리 생성
+        graph[u] = []
+
+    for u, v  in edges: #(u, v)라는 튜플을 두 변수로 풀어서 받는다
+
+        graph[u].append(v) #graph[]
+
+        if not directed:
+            graph[v].append(u)
     pass
-    
     return graph
 
 # 테스트 케이스
