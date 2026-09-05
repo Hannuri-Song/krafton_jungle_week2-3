@@ -47,14 +47,15 @@ def climb_stairs(n):
     """
     # TODO: 특별한 경우 처리
     pass
-    
+    if n <= 1:
+        return 1
     
     # TODO: dp 배열 생성 및 초기화
     pass
-    
+    dp = {}
     # TODO: 작은 문제부터 차례로 계산
     pass
-    
+    dp[n] = climb_stairs(n-1) + climb_stairs(n-2)
     return dp[n]
 
 # 테스트 케이스
