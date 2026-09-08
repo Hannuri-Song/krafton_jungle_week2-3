@@ -52,10 +52,13 @@ def climb_stairs(n):
     
     # TODO: dp 배열 생성 및 초기화
     pass
-    dp = {}
+    dp = [0] * (n+1)
+    dp[0] = 1
+    dp[1] = 1
     # TODO: 작은 문제부터 차례로 계산
     pass
-    dp[n] = climb_stairs(n-1) + climb_stairs(n-2)
+    for i in range(2, n+1):
+        dp[i] = dp[i-1] + dp[i-2]
     return dp[n]
 
 # 테스트 케이스
