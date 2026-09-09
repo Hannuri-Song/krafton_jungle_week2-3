@@ -50,7 +50,7 @@ def make_change_greedy(change, coins):
     for i in coins:
         coins_count = change // i
         change -= coins_count * i
-        if coins_count is not 0:
+        if coins_count != 0:
             total_coins += coins_count
             result[i] = coins_count
 
